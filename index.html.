@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Books of Legends | Official Universe</title>
+
+<meta name="description" content="Enter Books of Legends, an expansive universe of mysterious realms, legendary characters, supernatural powers, and untold histories.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #080810;
+    --purple: #8b5cf6;
+    --gold: #e8c878;
+    --white: #f5f3ff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+    border-bottom: 1px solid #ffffff18;
+    background: #080810ed;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #c9c5da;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px;
+    position: relative;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 100%,
+        #52259c65, transparent 60%),
+        radial-gradient(ellipse at 15% 10%,
+        #3c236b30, transparent 50%),
+        linear-gradient(160deg, #111020, #080810 75%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 15% 25%, #ffffffa0, transparent),
+        radial-gradient(2px 2px at 75% 15%, #e8c87890, transparent),
+        radial-gradient(2px 2px at 35% 70%, #ffffff90, transparent),
+        radial-gradient(2px 2px at 85% 75%, #a78bfa90, transparent),
+        radial-gradient(1px 1px at 55% 35%, #ffffff90, transparent);
+    background-size: 180px 180px;
+    z-index: -1;
+    animation: stars 12s linear infinite;
+}
+
+@keyframes stars {
+    from { background-position: 0 0; }
+    to { background-position: 180px 180px; }
+}
+
+.eyebrow {
+    color: var(--gold);
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 78px);
+    letter-spacing: 3px;
+    line-height: 1.15;
+    max-width: 950px;
+    text-shadow: 0 0 35px #8b5cf655;
+}
+
+h1 span {
+    color: var(--gold);
+}
+
+.subtitle {
+    margin-top: 24px;
+    max-width: 560px;
+    line-height: 1.8;
+    color: #bdb8d2;
+    font-size: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 35px;
+}
+
+.button {
+    padding: 15px 23px;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.primary {
+    background: var(--gold);
+    color: #100e17;
+}
+
+.secondary {
+    color: var(--white);
+    border-color: #8b5cf6;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 24px #8b5cf644;
+}
+
+section {
+    padding: 75px 7%;
+}
+
+.section-label {
+    color: var(--purple);
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+}
+
+h2 {
+    font-size: clamp(27px, 5vw, 42px);
+    margin-bottom: 18px;
+}
+
+.section-intro {
+    color: #aaa6bf;
+    line-height: 1.8;
+    max-width: 650px;
+    margin-bottom: 35px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg, #171524, #0d0c16);
+    border: 1px solid #ffffff18;
+    border-radius: 9px;
+    padding: 26px 22px;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6a0;
+    box-shadow: 0 10px 35px #0006;
+}
+
+.card .icon {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.card p {
+    color: #aaa6bf;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.card a {
+    display: inline-block;
+    color: #c4a5ff;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.feature {
+    background:
+        radial-gradient(ellipse at 100% 50%, #572a9633, transparent 60%),
+        #0d0c16;
+    border-top: 1px solid #ffffff12;
+    border-bottom: 1px solid #ffffff12;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    color: #77738d;
+    font-size: 12px;
+    line-height: 2;
+}
+
+footer strong {
+    color: var(--gold);
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 17px 5%;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">BOOKS OF LEGENDS</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="universe.html">Universe</a>
+        <a href="characters.html">Characters</a>
+        <a href="lore.html">Lore</a>
+        <a href="realm-art.html">Realm Art</a>
+        <a href="news.html">News</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="eyebrow">AN UNIVERSE BEYOND IMAGINATION</div>
+
+    <h1>
+        BOOKS OF<br>
+        <span>LEGENDS</span>
+    </h1>
+
+    <p class="subtitle">
+        Every realm holds a secret.
+        Every legend has a beginning.
+        Beyond the known worlds lies a universe
+        filled with ancient mysteries, extraordinary
+        powers, and histories waiting to be discovered.
+    </p>
+
+    <div class="buttons">
+        <a href="universe.html" class="button primary">
+            EXPLORE THE UNIVERSE
+        </a>
+
+        <a href="characters.html" class="button secondary">
+            MEET THE LEGENDS
+        </a>
+    </div>
+</section>
+
+<section>
+    <div class="section-label">DISCOVER THE UNKNOWN</div>
+
+    <h2>A Universe of Endless Possibilities</h2>
+
+    <p class="section-intro">
+        Step into a connected universe where ancient
+        secrets meet modern civilization, powerful
+        beings shape history, and every discovery
+        opens the door to another mystery.
+    </p>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="icon">🌌</div>
+            <h3>The Realms</h3>
+            <p>
+                Discover extraordinary worlds, mysterious
+                locations, hidden histories, and the forces
+                that shape each realm.
+            </p>
+            <a href="universe.html">ENTER THE REALMS →</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">👑</div>
+            <h3>Character Codex</h3>
+            <p>
+                Explore the identities, abilities,
+                connections, and histories of legendary
+                beings across the universe.
+            </p>
+            <a href="characters.html">DISCOVER CHARACTERS →</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">📖</div>
+            <h3>The Lore Library</h3>
+            <p>
+                Uncover forgotten events, ancient records,
+                legendary conflicts, and secrets hidden
+                throughout history.
+            </p>
+            <a href="lore.html">OPEN THE ARCHIVES →</a>
+        </article>
+
+        <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Realm Art Codex</h3>
+            <p>
+                Learn about supernatural abilities,
+                powerful techniques, and the evolution
+                of Realm Art.
+            </p>
+            <a href="realm-art.html">EXPLORE THE ARTS →</a>
+        </article>
+
+    </div>
+</section>
+
+<section class="feature">
+    <div class="section-label">THE UNIVERSE AWAITS</div>
+
+    <h2>More Than a Game</h2>
+
+    <p class="section-intro">
+        Books of Legends is a growing universe combining
+        exploration, powerful characters, mysterious
+        realms, supernatural abilities, and a story
+        that reaches beyond the boundaries of a single world.
+        Discover the universe here and follow the development
+        of its Roblox experience.
+    </p>
+
+    <div class="buttons">
+        <a href="game.html" class="button primary">
+            DISCOVER THE GAME
+        </a>
+
+        <a href="news.html" class="button secondary">
+            LATEST UPDATES
+        </a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <strong>BOOKS OF LEGENDS</strong><br>
+    An expanding universe of stories, realms, and legends.<br>
+    Official website project.
+</footer>
+
+</body>
+  </html>
