@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dense Forest | Books of Legends</title>
+
+<style>
+:root {
+    --bg: #080a0b;
+    --panel: #111816;
+    --purple: #a879e8;
+    --gold: #dfc27b;
+    --text: #f2f1e9;
+    --muted: #b7c0b8;
+    --border: #304139;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 17px 6%;
+    background: #0b100e;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    color: var(--gold);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #d5d9d4;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+nav a:hover {
+    color: var(--purple);
+}
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 7%;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(70, 105, 76, 0.35),
+            transparent 65%
+        ),
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(100, 66, 135, 0.18),
+            transparent 60%
+        ),
+        linear-gradient(180deg, #111b16, #080a0b);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(183, 207, 185, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(183, 207, 185, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+h1 {
+    font-size: clamp(40px, 9vw, 76px);
+    line-height: 1.12;
+    margin: 20px 0;
+    text-shadow: 0 0 24px rgba(129, 182, 136, 0.45);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #c8d0c9;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px;
+    border: 1px solid #8f72bc;
+    border-radius: 7px;
+    background: #36244c;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #563779;
+    box-shadow: 0 0 17px rgba(168, 121, 232, 0.3);
+}
+
+.button.secondary {
+    background: transparent;
+    border-color: var(--border);
+}
+
+section {
+    padding: 60px 7%;
+}
+
+.section-title {
+    color: var(--gold);
+    font-size: clamp(25px, 5vw, 36px);
+    margin-bottom: 12px;
+}
+
+.section-intro {
+    color: var(--muted);
+    max-width: 750px;
+    margin-bottom: 28px;
+}
+
+.overview {
+    background: #0c100e;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg, #17221b, #0e1310);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #8f72bc;
+    box-shadow: 0 0 18px rgba(112, 159, 117, 0.12);
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    color: #d8c6f1;
+    margin-bottom: 9px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.atmosphere {
+    text-align: center;
+    background:
+        radial-gradient(ellipse at center, #17251b, transparent 75%),
+        #080a0b;
+}
+
+.forest-symbol {
+    font-size: 85px;
+    margin: 20px 0;
+    filter: drop-shadow(0 0 15px rgba(117, 181, 126, 0.5));
+}
+
+.atmosphere-box {
+    max-width: 760px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(18, 29, 22, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.threat {
+    background: linear-gradient(145deg, #24151c, #110d11);
+    border-color: #59303d;
+}
+
+.threat h3 {
+    color: #e8a7b8;
+}
+
+.notice {
+    margin-top: 25px;
+    padding: 16px;
+    background: #1b1318;
+    border-left: 4px solid #9e526c;
+    border-radius: 5px;
+    color: #d9c5ce;
+}
+
+.explore {
+    text-align: center;
+    background: linear-gradient(180deg, #101b14, #080a0b);
+}
+
+.explore .section-intro {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    padding: 25px 7%;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: #87928a;
+    font-size: 12px;
+}
+
+footer a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+
+    .hero {
+        min-height: 68vh;
+        padding: 55px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">📖 BOOKS OF LEGENDS</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="universe.html">Universe</a>
+        <a href="characters.html">Characters</a>
+        <a href="plain-lands.html">Plain Lands</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">Island 02 · Wilderness Directory</div>
+
+        <h1>DENSE FOREST</h1>
+
+        <p>
+            A vast forest wrapped in drifting mist, where wildlife
+            moves between ancient trees and the wilderness holds
+            secrets that have yet to be discovered.
+        </p>
+
+        <a href="#wildlife" class="button">Discover the Wildlife</a>
+        <a href="universe.html" class="button secondary">
+            ← Universe Explorer
+        </a>
+    </div>
+</section>
+
+<section class="overview">
+    <h2 class="section-title">Into the Wilderness</h2>
+
+    <p class="section-intro">
+        Dense Forest is a mysterious natural environment within
+        Books of Legends. Its atmosphere is dark and misty, but
+        the forest is more than a place of fear. Wildlife,
+        unexpected encounters, and unexplored territory make
+        it a world of its own.
+    </p>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="card-icon">🌲</div>
+            <h3>The Deep Woods</h3>
+            <p>
+                Thick vegetation and towering trees create a
+                wilderness filled with places to explore.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🌫️</div>
+            <h3>Drifting Mist</h3>
+            <p>
+                Mist moves through the forest, giving the
+                environment its mysterious atmosphere.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">👁️</div>
+            <h3>Uncertain Encounters</h3>
+            <p>
+                The forest contains wildlife and potential
+                enemy encounters. Not everything is immediately
+                what it appears to be.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<section class="atmosphere">
+    <div class="atmosphere-box">
+        <div class="eyebrow">The Heart of the Wilderness</div>
+
+        <div class="forest-symbol">🌲</div>
+
+        <h2 class="section-title">A Forest Full of Life</h2>
+
+        <p class="section-intro" style="margin:auto;">
+            Some animals in Dense Forest can speak, while others
+            behave like ordinary wildlife. The ability to talk
+            is not shared by every creature. Each encounter
+            can reveal a different side of the forest.
+        </p>
+    </div>
+</section>
+
+<section id="wildlife">
+    <h2 class="section-title">Wildlife Directory</h2>
+
+    <p class="section-intro">
+        The forest is home to different kinds of creatures.
+        Their official species, names, and behaviours can be
+        added as the world develops.
+    </p>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="card-icon">🦊</div>
+            <h3>Talking Animals</h3>
+            <p>
+                Certain animals can communicate with players.
+                Their individual personalities and roles remain
+                open for future development.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🐾</div>
+            <h3>Ordinary Wildlife</h3>
+            <p>
+                Many creatures behave like normal animals.
+                Not every creature has speech or special powers.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🐺</div>
+            <h3>Fours</h3>
+            <p>
+                In Books of Legends, quadrupeds are referred to
+                as Fours. Their individual species and roles
+                can be defined separately.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<section class="overview">
+    <h2 class="section-title">Threat Alert</h2>
+
+    <p class="section-intro">
+        The wilderness can be dangerous. Players should remain
+        aware of their surroundings when exploring areas that
+        may contain hostile NPCs.
+    </p>
+
+    <div class="grid">
+
+        <article class="card threat">
+            <div class="card-icon">👹</div>
+            <h3>NPC Enemies</h3>
+            <p>
+                Hostile encounters may occur in the forest.
+                Specific enemy types and locations will be
+                added when their details are established.
+            </p>
+        </article>
+
+        <article class="card threat">
+            <div class="card-icon">⚠️</div>
+            <h3>Unknown Territory</h3>
+            <p>
+                Unexplored parts of the forest may contain
+                discoveries or challenges.
+            </p>
+        </article>
+
+    </div>
+
+    <div class="notice">
+        <strong>Explorer's Notice:</strong>
+        Talking animals are not automatically friendly,
+        and ordinary wildlife should not automatically
+        be treated as an enemy.
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Forest Exploration</h2>
+
+    <p class="section-intro">
+        This directory will expand as the forest map is
+        developed. Its individual locations, secrets,
+        and activities have not yet been finalized.
+    </p>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="card-icon">🧭</div>
+            <h3>Discover the Map</h3>
+            <p>
+                A dedicated forest map can be added here
+                when its layout is established.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">📜</div>
+            <h3>Uncover the Lore</h3>
+            <p>
+                Future updates can introduce the forest's
+                confirmed history and important discoveries.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">⚔️</div>
+            <h3>Face Challenges</h3>
+            <p>
+                Specific encounters and gameplay activities
+                can be introduced as their mechanics are designed.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<section class="explore">
+    <div class="eyebrow">Your Journey Continues</div>
+
+    <h2 class="section-title" style="margin-top:15px;">
+        The Wilderness Is Only One Chapter
+    </h2>
+
+    <p class="section-intro">
+        Return to the island directory or visit Plain Lands,
+        where the journey through Books of Legends begins.
+    </p>
+
+    <a href="universe.html" class="button">
+        Explore All Islands
+    </a>
+
+    <a href="plain-lands.html" class="button secondary">
+        Visit Plain Lands
+    </a>
+
+    <a href="characters.html" class="button secondary">
+        Character Directory
+    </a>
+</section>
+
+</main>
+
+<footer>
+    <p>BOOKS OF LEGENDS © 2026</p>
+    <p>A universe of legends, mysteries, and discovery.</p>
+    <p style="margin-top:10px;">
+        <a href="index.html">Home</a> ·
+        <a href="universe.html">Universe Explorer</a>
+    </p>
+</footer>
+
+</body>
+</html>
