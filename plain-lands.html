@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plain Lands | Books of Legends</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080710;
+    color: #f5f0ff;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    padding: 18px 7%;
+    background: rgba(12, 9, 25, 0.96);
+    border-bottom: 1px solid #6e42b8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: #d5a7ff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #eee3ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d4a4ff;
+}
+
+.hero {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 8%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 100%, #54258b 0%, transparent 50%),
+        linear-gradient(180deg, #100b25, #17102d 55%, #080710);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(190,140,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(190,140,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(transparent, black);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 850px;
+}
+
+.label {
+    color: #d6b3ff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: clamp(42px, 9vw, 78px);
+    line-height: 1.1;
+    margin: 18px 0;
+    color: #fff;
+    text-shadow: 0 0 25px #8f42ff;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 28px;
+    color: #d2c8e8;
+    font-size: 17px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 22px;
+    margin: 5px;
+    border: 1px solid #b77aff;
+    border-radius: 8px;
+    background: #692bb0;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #8845d6;
+    box-shadow: 0 0 20px #853de0;
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background: transparent;
+}
+
+section {
+    padding: 65px 8%;
+}
+
+.section-title {
+    font-size: clamp(26px, 5vw, 38px);
+    color: #d9b5ff;
+    margin-bottom: 15px;
+}
+
+.section-intro {
+    color: #bdb3d2;
+    max-width: 720px;
+    margin-bottom: 30px;
+}
+
+.overview {
+    background: #0c0a16;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg, #19122b, #0e0c19);
+    border: 1px solid #382453;
+    border-radius: 14px;
+    padding: 24px;
+    transition: 0.25s;
+}
+
+.card:hover {
+    border-color: #a56cff;
+    box-shadow: 0 0 22px rgba(143, 66, 255, 0.16);
+    transform: translateY(-4px);
+}
+
+.card-icon {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: #e0c6ff;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #c1b7d3;
+    font-size: 14px;
+}
+
+.statue {
+    background:
+        radial-gradient(ellipse at center, #281444, transparent 65%),
+        #090812;
+    text-align: center;
+}
+
+.statue-symbol {
+    font-size: 95px;
+    margin: 15px 0;
+    filter: drop-shadow(0 0 22px #a76bff);
+}
+
+.statue-box {
+    max-width: 750px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #5a347c;
+    border-radius: 18px;
+    background: rgba(24, 15, 40, 0.8);
+}
+
+.threat {
+    border-color: #703044;
+    background: linear-gradient(145deg, #25111e, #100c17);
+}
+
+.threat h3 {
+    color: #ffb3c4;
+}
+
+.warning {
+    border-left: 4px solid #b34a73;
+    padding: 15px 18px;
+    background: #1c101c;
+    color: #e7c9d7;
+    border-radius: 5px;
+    margin-top: 25px;
+}
+
+.explore {
+    text-align: center;
+    background: linear-gradient(180deg, #100b1d, #080710);
+}
+
+footer {
+    padding: 25px 8%;
+    text-align: center;
+    border-top: 1px solid #30203f;
+    color: #8f84a5;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 70vh;
+        padding: 55px 6%;
+    }
+
+    section {
+        padding: 48px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">📖 BOOKS OF LEGENDS</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="universe.html">Universe</a>
+        <a href="characters.html">Characters</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="label">World Directory • Location 01</div>
+
+        <h1>PLAIN LANDS</h1>
+
+        <p>
+            A modern city of towering skyscrapers, hidden dangers,
+            and secrets waiting to be uncovered. Here, the journey
+            through the Books of Legends begins.
+        </p>
+
+        <a class="button" href="#locations">Explore the City</a>
+        <a class="button secondary" href="universe.html">← Universe Explorer</a>
+    </div>
+</section>
+
+<section class="overview">
+    <h2 class="section-title">Welcome to Plain Lands</h2>
+
+    <p class="section-intro">
+        Forget the idea of an ancient village. Plain Lands is a
+        modern urban environment where enormous buildings rise
+        above busy streets. Beneath the city's ordinary appearance
+        lies a world filled with danger, discovery, and adventure.
+    </p>
+
+    <div class="grid">
+        <article class="card">
+            <div class="card-icon">🏙️</div>
+            <h3>The Modern City</h3>
+            <p>
+                Explore skyscrapers, city streets, and urban
+                surroundings. The city is the starting point
+                for the adventure.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">📚</div>
+            <h3>Legends Await</h3>
+            <p>
+                The Books of Legends universe holds mysteries
+                that players can uncover as their journey grows.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>Stay Alert</h3>
+            <p>
+                Not everyone in the city is harmless. Some
+                seemingly ordinary people may hide dangerous
+                intentions.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="statue">
+    <div class="statue-box">
+        <div class="label">A Landmark of the City</div>
+
+        <div class="statue-symbol">📖</div>
+
+        <h2 class="section-title">The Great Book of Legends Statue</h2>
+
+        <p class="section-intro" style="margin: auto;">
+            Standing at the centre of Plain Lands is a medium-sized
+            statue dedicated to the Great Book of Legends. It gives
+            the city a landmark connected to the greater universe.
+        </p>
+    </div>
+</section>
+
+<section id="locations">
+    <h2 class="section-title">Explore Plain Lands</h2>
+
+    <p class="section-intro">
+        These are the main exploration categories for this page.
+        Specific buildings and destinations can be added as the
+        world map develops.
+    </p>
+
+    <div class="grid">
+        <article class="card">
+            <div class="card-icon">🌆</div>
+            <h3>City Centre</h3>
+            <p>
+                The heart of the urban environment, home to the
+                city's central landmark.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Skyscraper District</h3>
+            <p>
+                A cityscape of towering modern buildings.
+                Individual buildings and their functions can
+                be defined as the map expands.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🛣️</div>
+            <h3>City Streets</h3>
+            <p>
+                Travel through the urban environment and remain
+                aware of your surroundings.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🔎</div>
+            <h3>Hidden Discoveries</h3>
+            <p>
+                A space for future secrets, discoveries, and
+                exploration activities.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="overview">
+    <h2 class="section-title">Threat Alert: The Thieves</h2>
+
+    <p class="section-intro">
+        Plain Lands has its share of dangerous enemies. The thieves
+        are known for their speed, stealth, and ability to catch
+        people off guard.
+    </p>
+
+    <div class="grid">
+        <article class="card threat">
+            <div class="card-icon">🥷</div>
+            <h3>Stealth</h3>
+            <p>
+                Some thieves can blend into their surroundings
+                and approach without attracting attention.
+            </p>
+        </article>
+
+        <article class="card threat">
+            <div class="card-icon">💨</div>
+            <h3>Speed</h3>
+            <p>
+                These enemies can move quickly, making encounters
+                more challenging for unprepared players.
+            </p>
+        </article>
+
+        <article class="card threat">
+            <div class="card-icon">🎭</div>
+            <h3>Unexpected Encounters</h3>
+            <p>
+                A thief may appear innocent at first. Players
+                should pay attention before deciding how to respond.
+            </p>
+        </article>
+    </div>
+
+    <div class="warning">
+        <strong>Threat Notice:</strong> Never judge every stranger
+        by appearance alone. Some encounters may not be what they seem.
+    </div>
+</section>
+
+<section class="explore">
+    <div class="label">Your Legend Starts Here</div>
+
+    <h2 class="section-title">The City Is Only the Beginning</h2>
+
+    <p class="section-intro" style="margin-left:auto;margin-right:auto;">
+        Plain Lands is one part of a much larger universe.
+        Continue exploring to discover more islands, characters,
+        mysteries, and realms.
+    </p>
+
+    <a class="button" href="universe.html">Explore the Universe</a>
+    <a class="button secondary" href="characters.html">Meet the Characters</a>
+    <a class="button secondary" href="index.html">Return Home</a>
+</section>
+
+</main>
+
+<footer>
+    <p>Books of Legends © 2026</p>
+    <p>A universe of legends, mysteries, and endless possibilities.</p>
+</footer>
+
+</body>
+  </html>
