@@ -4,172 +4,310 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Universe | Books of Legends</title>
+<title>Universe Explorer | Books of Legends</title>
 
 <style>
+:root {
+    --background: #080710;
+    --panel: #141020;
+    --purple: #a56aff;
+    --gold: #e7c878;
+    --text: #f5efff;
+    --muted: #b9aecf;
+    --border: #382650;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
+    background: var(--background);
+    color: var(--text);
     font-family: Arial, sans-serif;
-    background: #080610;
-    color: #f4efff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
 }
 
 header {
-    text-align: center;
-    padding: 55px 18px;
-    background:
-        radial-gradient(ellipse at top, #502477, transparent 70%),
-        linear-gradient(135deg, #160b28, #080610);
-    border-bottom: 2px solid #d7b66b;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 16px 6%;
+    background: rgba(8, 7, 16, 0.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
 }
 
-header .eyebrow {
-    color: #c9a5ff;
-    font-size: 12px;
-    letter-spacing: 4px;
-}
-
-header h1 {
-    color: #e5c47b;
-    font-size: clamp(34px, 8vw, 58px);
-    text-shadow: 0 0 22px #8745ff;
-    margin: 20px 0 12px;
-}
-
-header p {
-    color: #d3c6e8;
-    line-height: 1.8;
+.logo {
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 1px;
 }
 
 nav {
-    text-align: center;
-    padding: 14px 8px;
-    background: #100b1c;
-    border-bottom: 1px solid #50336f;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 nav a {
-    display: inline-block;
-    margin: 7px 8px;
-    color: #e5c47b;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
+    color: var(--muted);
 }
 
 nav a:hover {
-    color: #c9a5ff;
+    color: var(--purple);
 }
 
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 25px 16px 45px;
-}
-
-.intro {
+.hero {
+    min-height: 390px;
+    padding: 85px 7%;
     text-align: center;
-    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at 50% 100%,
+            rgba(116, 50, 180, 0.4), transparent 65%),
+        linear-gradient(180deg, #171027, #080710);
+    border-bottom: 1px solid var(--border);
 }
 
-.intro h2 {
-    color: #c9a5ff;
-}
-
-.intro p {
-    color: #cfc5df;
-    line-height: 1.9;
-    max-width: 750px;
-    margin: auto;
-}
-
-.section-title {
-    color: #e5c47b;
-    margin-top: 40px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #50336f;
-}
-
-.realm-grid,
-.island-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 17px;
-    margin-top: 20px;
-}
-
-.card {
-    padding: 22px;
-    background: linear-gradient(145deg, #1b122b, #0d0a15);
-    border: 1px solid #604081;
-    border-radius: 13px;
-    transition: 0.25s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #e5c47b;
-    box-shadow: 0 0 20px #3a2053;
-}
-
-.icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    color: #e5c47b;
-    margin: 8px 0;
-}
-
-.card p {
-    color: #cfc5df;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.badge {
-    display: inline-block;
-    padding: 5px 9px;
-    background: #28183b;
-    border: 1px solid #65468a;
-    border-radius: 20px;
-    color: #c9a5ff;
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
     font-size: 11px;
 }
 
-.note {
-    margin-top: 30px;
-    padding: 22px;
-    background: #130c20;
-    border-left: 3px solid #c9a5ff;
+.hero h1 {
+    margin: 16px 0;
+    font-size: clamp(38px, 8vw, 72px);
+    line-height: 1.1;
+    text-shadow: 0 0 28px rgba(165, 106, 255, 0.7);
+}
+
+.hero p {
+    max-width: 680px;
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+
+.button {
+    display: inline-block;
+    padding: 11px 20px;
+    margin: 4px;
+    text-decoration: none;
+    border: 1px solid var(--purple);
     border-radius: 8px;
-}
-
-.note h3 {
-    color: #e5c47b;
-}
-
-.note p {
-    color: #cfc5df;
-    line-height: 1.8;
-}
-
-footer {
-    text-align: center;
-    padding: 25px 15px;
-    background: #100b1c;
-    border-top: 1px solid #50336f;
-    color: #a99bbd;
+    background: #4c267c;
+    color: white;
+    font-weight: bold;
     font-size: 13px;
 }
 
-footer a {
-    color: #e5c47b;
+.button:hover {
+    background: #7040a5;
+    box-shadow: 0 0 18px rgba(165, 106, 255, 0.35);
+}
+
+.button.secondary {
+    background: transparent;
+    border-color: var(--border);
+}
+
+main {
+    max-width: 1450px;
+    margin: auto;
+}
+
+section.content {
+    padding: 55px 6%;
+}
+
+.section-heading {
+    margin-bottom: 10px;
+    color: var(--gold);
+    font-size: clamp(25px, 5vw, 36px);
+}
+
+.section-description {
+    color: var(--muted);
+    max-width: 750px;
+    margin-bottom: 28px;
+}
+
+.search-area {
+    margin-bottom: 30px;
+}
+
+.search-area input {
+    width: 100%;
+    padding: 15px;
+    background: #110d1c;
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-area input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 12px rgba(165, 106, 255, 0.2);
+}
+
+.island-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    gap: 18px;
+}
+
+.island-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 245px;
+    padding: 23px;
+    background: linear-gradient(145deg, #1b142a, #0f0c18);
+    border: 1px solid var(--border);
+    border-radius: 13px;
     text-decoration: none;
+    transition: transform 0.2s, border-color 0.2s,
+                box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.island-card:hover,
+.island-card:focus-visible {
+    transform: translateY(-5px);
+    border-color: var(--purple);
+    box-shadow: 0 0 23px rgba(165, 106, 255, 0.2);
+    outline: none;
+}
+
+.island-number {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.island-icon {
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+.island-card h3 {
+    font-size: 20px;
+    color: #e5d2ff;
+    margin-bottom: 8px;
+}
+
+.island-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.card-action {
+    margin-top: auto;
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.featured {
+    border-color: #8e62bd;
+    background:
+        radial-gradient(ellipse at top right,
+            rgba(139, 76, 194, 0.2), transparent 70%),
+        linear-gradient(145deg, #211531, #100c18);
+}
+
+.realm-panel {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--panel);
+    margin-bottom: 18px;
+}
+
+.realm-panel h3 {
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.realm-panel p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.realm-note {
+    margin-top: 16px;
+    padding: 14px;
+    border-left: 3px solid var(--gold);
+    background: rgba(231, 200, 120, 0.07);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.no-results {
+    display: none;
+    padding: 25px;
+    color: var(--muted);
+    text-align: center;
+}
+
+footer {
+    padding: 28px 6%;
+    text-align: center;
+    color: #8f84a5;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+}
+
+footer a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+
+    section.content {
+        padding: 40px 5%;
+    }
+
+    .island-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -177,239 +315,350 @@ footer a {
 <body>
 
 <header>
-    <div class="eyebrow">EXPLORE BEYOND THE KNOWN</div>
-    <h1>THE UNIVERSE</h1>
-    <p>
-        Thirteen islands. Mysterious realms.
-        Countless legends waiting to be uncovered.
-    </p>
+    <div class="logo">📖 BOOKS OF LEGENDS</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="universe.html">Universe</a>
+        <a href="characters.html">Characters</a>
+        <a href="lore.html">Lore</a>
+        <a href="realm-art.html">Realm Arts</a>
+    </nav>
 </header>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="universe.html">Universe</a>
-    <a href="characters.html">Characters</a>
-    <a href="malkinze.html">Malkinze</a>
-    <a href="kasera.html">Kasera</a>
-    <a href="hallow.html">Hallow</a>
-    <a href="lore.html">Lore</a>
-    <a href="realm-art.html">Realm Art</a>
-</nav>
+<section class="hero">
+    <div class="eyebrow">Beyond the Known</div>
+
+    <h1>UNIVERSE EXPLORER</h1>
+
+    <p>
+        Thirteen islands. Mysterious realms. Powerful beings.
+        Explore the world of Books of Legends and discover
+        where your legend begins.
+    </p>
+
+    <div>
+        <a href="#islands" class="button">Explore Islands ↓</a>
+        <a href="#realms" class="button secondary">Discover Realms</a>
+    </div>
+</section>
 
 <main>
 
-    <section class="intro">
-        <h2>⚜️ Welcome to Books of Legends ⚜️</h2>
+<section class="content" id="islands">
 
+    <h2 class="section-heading">The Island Directory</h2>
+
+    <p class="section-description">
+        Select an island to explore its page. Plain Lands is
+        available now. The remaining island pages will be
+        added as the universe develops.
+    </p>
+
+    <div class="search-area">
+        <input
+            type="search"
+            id="islandSearch"
+            placeholder="🔎 Search islands..."
+            aria-label="Search islands"
+        >
+    </div>
+
+    <div class="island-grid" id="islandGrid">
+
+        <a href="plain-lands.html"
+           class="island-card featured"
+           data-search="plain lands city skyscrapers statue modern">
+            <span class="island-number">ISLAND 01</span>
+            <div class="island-icon">🏙️</div>
+            <h3>Plain Lands</h3>
+            <p>
+                A modern city of skyscrapers, a central
+                Great Book of Legends statue, and dangerous thieves.
+            </p>
+            <span class="card-action">EXPLORE PLAIN LANDS →</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Dense Forest"
+           data-search="dense forest mist wildlife talking animals">
+            <span class="island-number">ISLAND 02</span>
+            <div class="island-icon">🌲</div>
+            <h3>Dense Forest</h3>
+            <p>
+                A mist-covered forest where some animals talk
+                and danger may hide among the trees.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Dark Jungle"
+           data-search="dark jungle shadows wilderness">
+            <span class="island-number">ISLAND 03</span>
+            <div class="island-icon">🌑</div>
+            <h3>Dark Jungle</h3>
+            <p>
+                A shadowy jungle awaiting its own map,
+                locations, and encounters.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Mechanics Workshop"
+           data-search="mechanics workshop gears equipment weapons">
+            <span class="island-number">ISLAND 04</span>
+            <div class="island-icon">⚙️</div>
+            <h3>Mechanics Workshop</h3>
+            <p>
+                The place associated with gears, equipment,
+                and weapons.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Glowing Mines"
+           data-search="glowing mines crystals underground">
+            <span class="island-number">ISLAND 05</span>
+            <div class="island-icon">💎</div>
+            <h3>Glowing Mines</h3>
+            <p>
+                Explore the concept of glowing mines
+                as this island's details take shape.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Exotic Beach"
+           data-search="exotic beach tropical coastline">
+            <span class="island-number">ISLAND 06</span>
+            <div class="island-icon">🏝️</div>
+            <h3>Exotic Beach</h3>
+            <p>
+                A coastal destination waiting to be explored
+                and developed.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Blue Sea"
+           data-search="blue sea underwater ocean">
+            <span class="island-number">ISLAND 07</span>
+            <div class="island-icon">🌊</div>
+            <h3>Blue Sea</h3>
+            <p>
+                An underwater area belonging to the
+                wider Books of Legends world.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Crystal Isle"
+           data-search="crystal isle crystals">
+            <span class="island-number">ISLAND 08</span>
+            <div class="island-icon">🔮</div>
+            <h3>Crystal Isle</h3>
+            <p>
+                An island entry reserved for its confirmed
+                geography, story, and features.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Skyfall Atoll"
+           data-search="skyfall atoll divine realm essence whirlpool">
+            <span class="island-number">ISLAND 09</span>
+            <div class="island-icon">☁️</div>
+            <h3>Skyfall Atoll</h3>
+            <p>
+                An airborne island connected to the Divine Realm,
+                essence, and special whirlpool gates.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Phantom Reef"
+           data-search="phantom reef ocean">
+            <span class="island-number">ISLAND 10</span>
+            <div class="island-icon">👻</div>
+            <h3>Phantom Reef</h3>
+            <p>
+                An island entry reserved for its confirmed
+                details and design.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Iron Archipelago"
+           data-search="iron archipelago islands metal">
+            <span class="island-number">ISLAND 11</span>
+            <div class="island-icon">⚓</div>
+            <h3>Iron Archipelago</h3>
+            <p>
+                An island entry awaiting its final name,
+                geography, and world details.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="Ember Vale"
+           data-search="ember vale fire">
+            <span class="island-number">ISLAND 12</span>
+            <div class="island-icon">🔥</div>
+            <h3>Ember Vale</h3>
+            <p>
+                An island entry reserved for its confirmed
+                setting and features.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+        <a href="#islands"
+           class="island-card"
+           data-island="The Boarder"
+           data-search="the boarder final island next realm">
+            <span class="island-number">ISLAND 13</span>
+            <div class="island-icon">🚪</div>
+            <h3>The Boarder</h3>
+            <p>
+                The final island and a crossing point toward
+                the next realm.
+            </p>
+            <span class="card-action">ISLAND PAGE COMING SOON</span>
+        </a>
+
+    </div>
+
+    <p id="noResults" class="no-results">
+        No islands match that search. Try another name.
+    </p>
+
+</section>
+
+<section class="content" id="realms">
+
+    <h2 class="section-heading">Beyond the Islands</h2>
+
+    <p class="section-description">
+        Islands are only one part of the Books of Legends.
+        Realms hold larger pieces of the universe's story.
+    </p>
+
+    <div class="realm-panel">
+        <h3>🌌 The Known World</h3>
         <p>
-            A universe shaped by ancient mysteries, extraordinary
-            powers, forgotten histories, and beings beyond ordinary
-            understanding. Every location has a story, and every
-            journey can lead to something unexpected.
+            Begin exploring through Plain Lands and the
+            island directory. The world grows as more locations
+            are added to the explorer.
         </p>
-    </section>
+    </div>
 
-    <h2 class="section-title">🌌 The Realms</h2>
-
-    <section class="realm-grid">
-
-        <article class="card">
-            <div class="icon">🌍</div>
-            <span class="badge">Realm Explorer</span>
-            <h3>The Known World</h3>
-            <p>
-                Explore the main island regions, discover their
-                inhabitants, and uncover the challenges waiting
-                across the world.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🌑</div>
-            <span class="badge">Dark Realm</span>
-            <h3>The Dark Realm</h3>
-            <p>
-                A realm connected to Rhapsody's rule and the
-                conflict that threatens the balance of the
-                Books of Legends universe.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🏰</div>
-            <span class="badge">Forgotten History</span>
-            <h3>The Forgotten Kingdom</h3>
-            <p>
-                A hidden fourth realm whose history and path
-                were erased. A barrier separates it from the
-                ordinary knowledge of the other realms.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">✨</div>
-            <span class="badge">Higher Realm</span>
-            <h3>The Divine Realm</h3>
-            <p>
-                A mysterious place connected to Skyfall Atoll,
-                divine knowledge, and the secrets of essence.
-                Its deeper mysteries await exploration.
-            </p>
-        </article>
-
-    </section>
-
-    <h2 class="section-title">🏝️ The Island Directory</h2>
-
-    <section class="island-grid">
-
-        <article class="card">
-            <div class="icon">🏙️</div>
-            <a href="plain-lands.html" class="card island-link">
-    <h3>🏙️ Plain Lands</h3>
-    <p>A modern city where the adventure begins.</p>
-    <span>EXPLORE →</span>
-            </a>        </a>
-            <h3>2. Dense Forest</h3>
-            <p>
-                A misty forest inhabited by wildlife and
-                dangerous encounters. Some animals can talk,
-                while others remain ordinary creatures.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🌿</div>
-            <h3>3. Dark Jungle</h3>
-            <p>
-                A darker wilderness filled with dangerous
-                paths and potential discoveries.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">⚙️</div>
-            <h3>4. Mechanics Workshop</h3>
-            <p>
-                A place associated with gears, equipment,
-                and weapons used throughout the world.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">⛏️</div>
-            <h3>5. Glowing Mines</h3>
-            <p>
-                A location whose glowing depths and
-                underground discoveries await further
-                exploration.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🏖️</div>
-            <h3>6. Exotic Beach</h3>
-            <p>
-                A distinctive coastal location within the
-                wider island world.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🌊</div>
-            <h3>7. Blue Sea</h3>
-            <p>
-                An underwater location connected to the
-                mysteries beneath the ocean.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">💎</div>
-            <h3>8. Crystal Isle</h3>
-            <p>
-                An extra island reserved for future
-                discoveries and its own unique identity.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">☁️</div>
-            <h3>9. Skyfall Atoll</h3>
-            <p>
-                An airborne island connected to the
-                Divine Realm, essence, and special
-                whirlpool gates.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">👻</div>
-            <h3>10. Phantom Reef</h3>
-            <p>
-                An extra island whose secrets and
-                adventures will be revealed as the
-                world develops.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">⚒️</div>
-            <h3>11. Iron Archipelago</h3>
-            <p>
-                A working name for an extra island region.
-                Its final name and real-world inspiration
-                can be developed later.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🔥</div>
-            <h3>12. Ember Vale</h3>
-            <p>
-                An extra island awaiting its full
-                environment, history, and gameplay design.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="icon">🚪</div>
-            <h3>13. The Boarder</h3>
-            <p>
-                The final island and a crossing point
-                toward the next realm. Its major boss
-                remains to be established.
-            </p>
-        </article>
-
-    </section>
-
-    <section class="note">
-        <h3>🌀 Beyond the Map</h3>
+    <div class="realm-panel">
+        <h3>🌑 The Dark Realm</h3>
         <p>
-            The world is larger than its visible locations.
-            Hidden paths, special gates, forgotten histories,
-            and connections between realms will gradually
-            reveal more of the Books of Legends universe.
+            A realm connected to Rhapsody and the events
+            surrounding the struggle for power.
         </p>
-    </section>
+    </div>
 
-    <section class="note">
-        <h3>📜 A Living Universe</h3>
+    <div class="realm-panel">
+        <h3>🏰 The Forgotten Kingdom</h3>
         <p>
-            This page is the beginning of the Universe
-            Explorer. Individual island maps, travel routes,
-            additional realm details, and future discoveries
-            can be added as the world grows.
+            A kingdom hidden behind a barrier, tied to erased
+            history, the Forgotten King, the Forgotten Commander,
+            and Hallow's Tower.
         </p>
-    </section>
+    </div>
+
+    <div class="realm-panel">
+        <h3>✨ The Divine Realm</h3>
+        <p>
+            Connected to Skyfall Atoll and its special
+            whirlpool gates.
+        </p>
+    </div>
+
+    <div class="realm-note">
+        Some island entries are placeholders while their
+        official names and details are being finalized.
+        This directory does not establish new lore as canon.
+    </div>
+
+</section>
 
 </main>
 
 <footer>
-    <p>BOOKS OF LEGENDS © The Official Universe</p>
-    <p><a href="index.html">← Return Home</a></p>
+    <p>BOOKS OF LEGENDS © 2026</p>
+    <p>Explore the universe. Discover the legends.</p>
+    <p style="margin-top:10px;">
+        <a href="index.html">Home</a> ·
+        <a href="characters.html">Characters</a> ·
+        <a href="plain-lands.html">Plain Lands</a>
+    </p>
 </footer>
 
+<script>
+const searchInput = document.getElementById("islandSearch");
+const cards = document.querySelectorAll(".island-card");
+const noResults = document.getElementById("noResults");
+
+searchInput.addEventListener("input", function () {
+    const query = this.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(function (card) {
+        const text = (
+            card.innerText + " " +
+            (card.dataset.search || "")
+        ).toLowerCase();
+
+        const matches = text.includes(query);
+
+        card.style.display = matches ? "flex" : "none";
+
+        if (matches) {
+            visibleCount++;
+        }
+    });
+
+    noResults.style.display =
+        visibleCount === 0 ? "block" : "none";
+});
+
+cards.forEach(function (card) {
+    card.addEventListener("click", function (event) {
+        if (card.dataset.island) {
+            event.preventDefault();
+
+            alert(
+                card.dataset.island +
+                " page is coming soon! We will build it next."
+            );
+        }
+    });
+});
+</script>
+
 </body>
-  </html>
+</html>
