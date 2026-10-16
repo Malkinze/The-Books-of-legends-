@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Jungle | Books of Legends</title>
+<meta name="description" content="A dense jungle destination awaiting its full map, inhabitants and story. Its page is ready for the island's canon to grow.">
+<style>
+
+:root{--bg:#090711;--panel:#151022;--panel2:#211631;--gold:#f3c96a;--purple:#a76cff;--text:#f7f2ff;--muted:#c0b5d2;--line:rgba(190,145,255,.25)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:5;background:rgba(9,7,17,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{font-weight:900;letter-spacing:1px;color:var(--gold)}
+.links{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.links a:hover{color:var(--gold)}
+.hero{min-height:340px;padding:72px 20px;display:flex;align-items:center;background:radial-gradient(ellipse at 75% 20%,var(--glow,rgba(167,108,255,.23)),transparent 55%),linear-gradient(135deg,#171025,#090711 72%);border-bottom:1px solid var(--line)}
+.hero-inner,.container{width:min(1050px,92%);margin:auto}
+.kicker{color:var(--gold);font-size:11px;font-weight:bold;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(38px,7vw,66px);line-height:1.1;margin:12px 0 18px;max-width:850px}
+.hero p{max-width:690px;color:var(--muted);font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-block;border:1px solid var(--line);padding:11px 17px;border-radius:8px;font-size:13px;font-weight:bold}
+.btn.primary{background:var(--gold);color:#1b1224;border-color:var(--gold)}
+main{padding:42px 0 65px}
+.intro{margin-bottom:28px}
+h2{font-size:clamp(25px,4vw,34px);margin-bottom:10px}
+.intro p,.section p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.card{padding:22px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,var(--panel2),var(--panel));min-height:150px}
+.card .icon{font-size:28px;margin-bottom:8px}
+.card h3{margin-bottom:7px;color:var(--gold);font-size:18px}
+.card p{font-size:14px}
+.section{padding:28px 0;border-top:1px solid var(--line);margin-top:30px}
+.callout{border:1px solid rgba(243,201,106,.25);border-radius:12px;padding:23px;background:radial-gradient(circle at 100% 0%,rgba(167,108,255,.14),transparent 50%),var(--panel)}
+.callout p{margin-top:6px}
+footer{padding:28px 18px;text-align:center;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+footer strong{color:var(--gold)}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:300px;padding:55px 0}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.nav{align-items:flex-start}.links{gap:11px}.hero p{font-size:14px}}
+
+</style>
+</head>
+<body style="--glow:rgba(95,100,50,.25)">
+<header class="top">
+  <div class="nav">
+    <a class="brand" href="index.html">BOOKS OF LEGENDS</a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="universe.html#islands">Universe Explorer</a>
+      <a href="characters.html">Characters</a>
+      <a href="lore.html">Lore</a>
+      <a href="realm-art.html">Realm Art</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Island 03 · Beyond the Green Shadow</div>
+    <h1>🌿 Dark Jungle</h1>
+    <p>A dense jungle destination awaiting its full map, inhabitants and story. Its page is ready for the island's canon to grow.</p>
+    <div class="actions">
+      <a class="btn primary" href="#explore">Explore this island</a>
+      <a class="btn" href="universe.html#islands">← Back to Universe Explorer</a>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <section class="intro" id="explore">
+    <div class="kicker">Island Overview</div>
+    <h2>Discover Dark Jungle</h2>
+    <p>Dark Jungle is one of the main islands in Books of Legends. This first page establishes its place in the world without locking in creatures, factions or events that have not yet been confirmed.</p>
+  </section>
+
+  <section class="section">
+    <div class="kicker">Points of Interest</div>
+    <h2>Explore the Territory</h2>
+    <p>These sections organize the island's known identity and leave room for confirmed locations and gameplay to be added.</p>
+    <div class="grid">
+      <article class="card">
+<div class="icon">🌴</div>
+<h3>Jungle Edge</h3>
+<p>The transition from safer routes into thick vegetation.</p>
+</article>
+<article class="card">
+<div class="icon">🍃</div>
+<h3>Overgrown Trails</h3>
+<p>A network of paths ready for exploration and future encounters.</p>
+</article>
+<article class="card">
+<div class="icon">🪨</div>
+<h3>Unmapped Ground</h3>
+<p>Areas reserved for landmarks and discoveries once the island design is finalized.</p>
+</article>
+<article class="card">
+<div class="icon">🗺️</div>
+<h3>Future Expedition</h3>
+<p>This section can later hold the island map, threats, secrets and points of interest.</p>
+</article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="callout">
+      <div class="kicker">World Record</div>
+      <h2>More to Discover</h2>
+      <p>The island's detailed lore, hazards and special features remain open for your decisions.</p>
+      <div class="actions">
+        <a class="btn primary" href="universe.html#islands">Return to the Islands</a>
+        <a class="btn" href="index.html">Homepage</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>Books of Legends</strong></p>
+  <p>Explore. Discover. Become a Legend.</p>
+</footer>
+</body>
+</html>
