@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b18">
+<meta name="description" content="Explore the history, seasons, chapters, and episodes of Books of Legends.">
+<title>Lore Encyclopedia | Books of Legends</title>
+<style>
+:root{
+  --bg:#0b0811;--panel:#151020;--panel2:#1d1530;--gold:#f2c76a;
+  --gold-soft:rgba(242,199,106,.22);--purple:#b58aff;--text:#f4efff;
+  --muted:#b8adc9;--line:rgba(190,151,255,.22);--green:#8ee0bd;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#2a1742 0%,var(--bg) 54%);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:10;background:rgba(11,8,17,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:900;letter-spacing:1.5px;color:var(--gold);font-size:14px}
+.links{display:flex;gap:15px;flex-wrap:wrap}
+.links a{font-size:12px;color:var(--muted)}
+.links a:hover,.links a[aria-current="page"]{color:var(--gold)}
+.wrap{width:min(1050px,calc(100% - 32px));margin:auto}
+.hero{padding:70px 0 54px;text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at center,rgba(117,65,177,.17),transparent 65%)}
+.kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--purple);font-weight:800}
+h1{font-size:clamp(35px,7vw,64px);line-height:1.08;margin:13px 0;color:var(--gold);letter-spacing:-1.5px}
+.hero p{max-width:700px;margin:16px auto;color:var(--muted);font-size:15px}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-block;padding:11px 17px;border:1px solid var(--line);border-radius:9px;font-size:13px;font-weight:700;background:#171020}
+.btn.primary{background:linear-gradient(135deg,#f2c76a,#d69d45);color:#17101f;border-color:transparent}
+main{padding:38px 0 70px}
+section{scroll-margin-top:85px}
+.section-head{margin-bottom:18px}
+.section-head h2{margin:5px 0;color:var(--gold);font-size:clamp(24px,4vw,34px)}
+.section-head p{color:var(--muted);margin:0;max-width:760px;font-size:14px}
+.panel{background:linear-gradient(145deg,rgba(29,21,48,.95),rgba(16,12,24,.96));border:1px solid var(--line);border-radius:15px;padding:22px;margin:18px 0}
+.panel h3{color:var(--gold);margin:0 0 8px;font-size:20px}
+.panel p{color:var(--muted);font-size:14px;margin:8px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;width:100%;padding:21px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#211631,#120e1b);color:var(--text);cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;font:inherit}
+.card:hover,.card:focus-visible{transform:translateY(-3px);border-color:rgba(242,199,106,.75);box-shadow:0 0 22px rgba(160,103,255,.12);outline:none}
+.card .icon{font-size:27px;margin-bottom:10px}
+.card h3{font-size:19px;color:var(--gold);margin:0 0 5px}
+.card p{font-size:13px;color:var(--muted);margin:0 0 14px}
+.card .meta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-top:auto}
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0}
+.pill{border:1px solid var(--line);background:#120d1b;color:var(--muted);border-radius:30px;padding:7px 12px;font-size:12px;cursor:pointer}
+.pill:hover,.pill.active{color:var(--gold);border-color:var(--gold)}
+.reader{display:none;margin-top:20px;border:1px solid rgba(242,199,106,.35);border-radius:15px;overflow:hidden;background:#100c17}
+.reader.open{display:block}
+.reader-head{padding:22px;background:linear-gradient(120deg,#2b1a42,#171020);border-bottom:1px solid var(--line)}
+.reader-head .eyebrow{color:var(--purple);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:bold}
+.reader-head h2{color:var(--gold);margin:5px 0;font-size:clamp(24px,5vw,36px)}
+.reader-head p{color:var(--muted);margin:0;font-size:13px}
+.reader-body{padding:22px}
+.story-note{padding:14px 16px;border-left:3px solid var(--gold);background:rgba(242,199,106,.06);color:var(--muted);font-size:13px;margin:15px 0}
+.scene{padding:17px 0;border-bottom:1px solid var(--line)}
+.scene:last-child{border-bottom:0}
+.scene h3{color:var(--purple);font-size:16px;margin:0 0 8px}
+.scene p{color:#ddd4ed;font-size:14px;margin:8px 0}
+.dialogue{color:var(--gold)!important;font-style:italic}
+.reader-controls{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px}
+.small-btn{border:1px solid var(--line);background:#1b1328;color:var(--text);padding:9px 13px;border-radius:8px;font-size:12px;cursor:pointer}
+.small-btn:hover{border-color:var(--gold);color:var(--gold)}
+.empty{color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:25px 16px;text-align:center;color:var(--muted);font-size:12px}
+footer strong{color:var(--gold)}
+@media(max-width:650px){.nav{align-items:flex-start}.links{gap:10px}.grid{grid-template-columns:1fr}.hero{padding:50px 0 40px}.panel,.reader-body,.reader-head{padding:17px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="nav">
+    <a class="brand" href="index.html">BOOKS OF LEGENDS</a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="universe.html">Universe</a>
+      <a href="characters.html">Characters</a><a href="lore.html" aria-current="page">Lore</a>
+      <a href="realm-art.html">Realm Art</a><a href="news.html">News</a><a href="game.html">Game</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">History · Seasons · Chapters · Episodes</div>
+    <h1>Lore Encyclopedia</h1>
+    <p>Every legend has a history. Explore events that came before the main story, then follow the story through its seasons, chapters, and episodes.</p>
+    <div class="actions">
+      <a class="btn primary" href="#previous-events">Explore Previous Events</a>
+      <a class="btn" href="#episodic-story">Enter the Story</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="previous-events">
+    <div class="section-head">
+      <div class="kicker">Before Episode One</div>
+      <h2>Previous Events</h2>
+      <p>This archive is separate from every season, chapter, and episode. It holds the history that happened before the episodic story begins.</p>
+    </div>
+    <div class="panel">
+      <h3>Historical Archive</h3>
+      <p>Use this section for established events from the distant past, ancient conflicts, character histories, and other background lore. These entries are historical records, not episodes.</p>
+      <p>New records can be added here as the story develops. Unconfirmed details will remain unrevealed until they are established by the creator.</p>
+    </div>
+    <div class="grid">
+      <button class="card" type="button" data-history="origins">
+        <span class="icon">🌌</span><h3>Origins &amp; Cosmology</h3>
+        <p>Historical information about the Core, the Void, Hallow, the Creator, and the formation of the realms, presented only as established.</p>
+        <span class="meta">Historical record · In development</span>
+      </button>
+      <button class="card" type="button" data-history="wars">
+        <span class="icon">⚔️</span><h3>Wars &amp; Betrayals</h3>
+        <p>Records of past conflicts, including the first internal war and the events surrounding Yami's betrayal.</p>
+        <span class="meta">Historical record · Expand as canon grows</span>
+      </button>
+      <button class="card" type="button" data-history="forgotten">
+        <span class="icon">🏰</span><h3>The Forgotten Kingdom</h3>
+        <p>The erased kingdom, its barrier, and the figures connected to its history.</p>
+        <span class="meta">Historical record · Details in development</span>
+      </button>
+      <button class="card" type="button" data-history="characters">
+        <span class="icon">👑</span><h3>Character Histories</h3>
+        <p>Background records for major characters, separate from their appearances in episodes.</p>
+        <span class="meta">Historical record · Expand as canon grows</span>
+      </button>
+    </div>
+    <div class="reader" id="historyReader" aria-live="polite">
+      <div class="reader-head"><div class="eyebrow">Previous Events · Archive Entry</div><h2 id="historyTitle">Historical Record</h2><p id="historySubtitle">Background lore</p></div>
+      <div class="reader-body"><div id="historyContent"></div><button class="small-btn" type="button" id="closeHistory">Close record</button></div>
+    </div>
+  </section>
+
+  <section id="episodic-story" style="margin-top:55px">
+    <div class="section-head">
+      <div class="kicker">The Main Narrative</div>
+      <h2>The Episodic Story</h2>
+      <p>The main story is organized into seasons. Each season contains chapters, and each chapter contains episodes.</p>
+    </div>
+    <div class="panel">
+      <div class="kicker">Season 1</div>
+      <h3 style="font-size:25px">The Books of Legends</h3>
+      <p>Explore the season's chapters below. Only chapters and episodes established by the creator should be treated as canon.</p>
+    </div>
+    <div class="panel" id="chapter-one">
+      <div class="kicker">Season 1 · Chapter 1</div>
+      <h3 style="font-size:24px">The Beginning of the End</h3>
+      <p>Chapter 1 begins with the event that gives the chapter its name. The End of Time Clock begins ticking, and the story follows key figures across the realms as they hear or respond to its sound.</p>
+      <div class="subnav"><span class="pill active">Episode list</span><span class="pill">Chapter 1</span></div>
+      <button class="card" type="button" id="openEpisode">
+        <span class="icon">🎬</span>
+        <h3>Episode 1: The Beginning of the End</h3>
+        <p>The End of Time Clock begins ticking across the realms. Major characters receive individual scenes, Hallow hears the sound in his tower, and Yami speaks from the depths of the Finale Realm.</p>
+        <span class="meta">Open episode ↗</span>
+      </button>
+      <div class="reader" id="episodeReader" aria-live="polite">
+        <div class="reader-head">
+          <div class="eyebrow">Season 1 · Chapter 1 · Episode 1</div>
+          <h2>The Beginning of the End</h2>
+          <p>The episodic story begins.</p>
+        </div>
+        <div class="reader-body">
+          <div class="story-note">This is the opening framework based on the story details established so far. It is not intended to replace the creator's full episode script. More scenes and dialogue can be added as the episode is developed.</div>
+          <div class="scene">
+            <h3>Opening: The Realms</h3>
+            <p>A few years have passed across the realms. The world has experienced a period of calm.</p>
+            <p>Then, clear as a bell, the End of Time Clock begins ticking.</p>
+          </div>
+          <div class="scene">
+            <h3>Across the Realms</h3>
+            <p>Major characters receive individual scenes as the clock's sound reaches them. The scenes focus on each character separately, cutting away from the others.</p>
+          </div>
+          <div class="scene">
+            <h3>The Finale Realm</h3>
+            <p>Deep within the Finale Realm, Yami reacts to the passing time.</p>
+            <p class="dialogue">Yami: “A few more nights, Your Majesty.”</p>
+          </div>
+          <div class="scene">
+            <h3>Hallow's Tower</h3>
+            <p>Hallow is shown in his tower, reading a book. He hears the clock and reflects on the calm the world has enjoyed.</p>
+            <p class="dialogue">Hallow: “Well, the world has been calm for a while now...”</p>
+          </div>
+          <div class="story-note">Episode status: In development. This page intentionally stops at the established material instead of inventing the next scenes.</div>
+          <div class="reader-controls">
+            <button class="small-btn" type="button" id="backToChapter">← Back to Chapter 1</button>
+            <button class="small-btn" type="button" id="closeEpisode">Close episode</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Future Chapters &amp; Episodes</h3>
+      <p>Additional chapters and episodes will appear here when their titles and stories are established. No placeholder title is treated as canon.</p>
+    </div>
+  </section>
+</main>
+
+<footer><strong>BOOKS OF LEGENDS</strong><br>Lore Encyclopedia · Previous Events remain separate from the episodic story.</footer>
+
+<script>
+const historyEntries = {
+  origins: {
+    title: "Origins & Cosmology",
+    subtitle: "Previous Events · Origins",
+    paragraphs: [
+      "Hallow existed before the Creator and the realms. Hallow made the path that the Creator later used to generate the realms.",
+      "The Core is described as being at the centre of the connected realms, with power beyond anything else. The Void is the emptiness in which realms can be counted.",
+      "This record will be expanded only when further details are confirmed."
+    ]
+  },
+  wars: {
+    title: "Wars & Betrayals",
+    subtitle: "Previous Events · Conflicts",
+    paragraphs: [
+      "Before Yami's betrayal, the world was at peace.",
+      "Driven by envy and greed over the Creator's praise, Yami spread rumours about the Celestial Emperor, accused the Creator of being unfit, and proposed an execution. The conflict divided the realms and began the first internal war.",
+      "Yami was defeated and chained in the Finale Realm. He can still project a fragment of his power. Other major figures were also confined in different ways.",
+      "This entry is a historical summary, not an episode."
+    ]
+  },
+  forgotten: {
+    title: "The Forgotten Kingdom",
+    subtitle: "Previous Events · Forgotten history",
+    paragraphs: [
+      "The Forgotten Kingdom is the fourth realm. Its history and path were erased, and a barrier concealed it.",
+      "The Forgotten Palace lies inside Hallow's Tower in the Forgotten Kingdom. The Forgotten King and the Forgotten Commander are figures connected to this realm.",
+      "Further history will be added as the creator establishes it."
+    ]
+  },
+  characters: {
+    title: "Character Histories",
+    subtitle: "Previous Events · Character records",
+    paragraphs: [
+      "This archive is reserved for background histories of major characters, including the Creator, Hallow, Kasera, Malkinze, Yami, and other figures.",
+      "Character profiles may describe established roles and traits, while events that occur during the main narrative belong in their respective episodes.",
+      "Individual records will be expanded as each character's history is confirmed."
+    ]
+  }
+};
+
+const historyReader = document.getElementById("historyReader");
+document.querySelectorAll("[data-history]").forEach(button => {
+  button.addEventListener("click", () => {
+    const entry = historyEntries[button.dataset.history];
+    if (!entry) return;
+    document.getElementById("historyTitle").textContent = entry.title;
+    document.getElementById("historySubtitle").textContent = entry.subtitle;
+    const content = document.getElementById("historyContent");
+    content.replaceChildren();
+    entry.paragraphs.forEach(paragraph => {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      content.appendChild(p);
+    });
+    historyReader.classList.add("open");
+    historyReader.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+document.getElementById("closeHistory").addEventListener("click", () => historyReader.classList.remove("open"));
+
+const episodeReader = document.getElementById("episodeReader");
+document.getElementById("openEpisode").addEventListener("click", () => {
+  episodeReader.classList.add("open");
+  episodeReader.scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("closeEpisode").addEventListener("click", () => episodeReader.classList.remove("open"));
+document.getElementById("backToChapter").addEventListener("click", () => {
+  episodeReader.classList.remove("open");
+  document.getElementById("chapter-one").scrollIntoView({behavior:"smooth",block:"start"});
+});
+</script>
+</body>
+</html>
